@@ -1,0 +1,54 @@
+{
+	"name": "CSVtoJSON_InputDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "CSVtoJSON_blobstorage_LS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "SampleCSV.txt",
+				"folderPath": "input",
+				"container": "containerwafa"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "id",
+				"type": "String"
+			},
+			{
+				"name": "fname",
+				"type": "String"
+			},
+			{
+				"name": "lname",
+				"type": "String"
+			},
+			{
+				"name": "age",
+				"type": "String"
+			},
+			{
+				"name": "skill1",
+				"type": "String"
+			},
+			{
+				"name": "skill2",
+				"type": "String"
+			},
+			{
+				"name": "skill3",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

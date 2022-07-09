@@ -1,0 +1,9 @@
+{
+	"name": "dfWafa",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "09bfc752-11a1-4403-88ff-3106599772cb",
+		"tenantId": "bad12864-913e-4b99-87d6-b8d2ad459e27"
+	}
+}

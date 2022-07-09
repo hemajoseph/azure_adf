@@ -1,0 +1,21 @@
+{
+	"name": "CSVtoJSON_OutputDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "CSVtoJSON_blobstorage_LS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "ArrayOfObjects.json",
+				"folderPath": "output",
+				"container": "containerwafa"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
