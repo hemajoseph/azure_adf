@@ -1,0 +1,91 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "dfWafa"
+		},
+		"CSVtoJSON_blobstorage_LS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'CSVtoJSON_blobstorage_LS'"
+		},
+		"MultipleCSVtoSQLDB_LS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'MultipleCSVtoSQLDB_LS'"
+		},
+		"MultipleCSVtoSQLDB_Sink_SQLDB_LS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'MultipleCSVtoSQLDB_Sink_SQLDB_LS'"
+		},
+		"sgWafaLinkedService_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'sgWafaLinkedService'"
+		},
+		"AzureKeyVault_LS_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://keyvault-wafa.vault.azure.net/"
+		},
+		"SQLDBtoBlob_SQLConn_LS_properties_typeProperties_connectionString_secretName": {
+			"type": "string",
+			"defaultValue": "keyvaultsecret-sqlconnection-wafa"
+		},
+		"SQLDBtoBlob_storage_LS_properties_typeProperties_connectionString_secretName": {
+			"type": "string",
+			"defaultValue": "keyvaultsecret-storage-wafa"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "dfWafa_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"CSVtoJSON_blobstorage_LS_connectionString": {
+						"value": "[parameters('CSVtoJSON_blobstorage_LS_connectionString')]"
+					},
+					"MultipleCSVtoSQLDB_LS_connectionString": {
+						"value": "[parameters('MultipleCSVtoSQLDB_LS_connectionString')]"
+					},
+					"MultipleCSVtoSQLDB_Sink_SQLDB_LS_connectionString": {
+						"value": "[parameters('MultipleCSVtoSQLDB_Sink_SQLDB_LS_connectionString')]"
+					},
+					"sgWafaLinkedService_connectionString": {
+						"value": "[parameters('sgWafaLinkedService_connectionString')]"
+					},
+					"AzureKeyVault_LS_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureKeyVault_LS_properties_typeProperties_baseUrl')]"
+					},
+					"SQLDBtoBlob_SQLConn_LS_properties_typeProperties_connectionString_secretName": {
+						"value": "[parameters('SQLDBtoBlob_SQLConn_LS_properties_typeProperties_connectionString_secretName')]"
+					},
+					"SQLDBtoBlob_storage_LS_properties_typeProperties_connectionString_secretName": {
+						"value": "[parameters('SQLDBtoBlob_storage_LS_properties_typeProperties_connectionString_secretName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

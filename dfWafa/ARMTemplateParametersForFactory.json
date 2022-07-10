@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "dfWafa"
+		},
+		"CSVtoJSON_blobstorage_LS_connectionString": {
+			"value": ""
+		},
+		"MultipleCSVtoSQLDB_LS_connectionString": {
+			"value": ""
+		},
+		"MultipleCSVtoSQLDB_Sink_SQLDB_LS_connectionString": {
+			"value": ""
+		},
+		"sgWafaLinkedService_connectionString": {
+			"value": ""
+		},
+		"AzureKeyVault_LS_properties_typeProperties_baseUrl": {
+			"value": "https://keyvault-wafa.vault.azure.net/"
+		},
+		"SQLDBtoBlob_SQLConn_LS_properties_typeProperties_connectionString_secretName": {
+			"value": "keyvaultsecret-sqlconnection-wafa"
+		},
+		"SQLDBtoBlob_storage_LS_properties_typeProperties_connectionString_secretName": {
+			"value": "keyvaultsecret-storage-wafa"
+		}
+	}
+}
